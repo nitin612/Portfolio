@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
+import { ProgressBar } from "@/components/ProgressBar";
 import "./globals.css";
 
 const geistSans = Geist({
@@ -30,9 +31,12 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} h-full antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-white text-zinc-900 dark:bg-black dark:text-zinc-50">{children}</body>
+      <body className="flex flex-col bg-white text-zinc-900 dark:bg-black dark:text-zinc-50">
+        <ProgressBar />
+        {children}
+      </body>
     </html>
   );
 }

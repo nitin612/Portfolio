@@ -3,6 +3,9 @@
 import Image from "next/image";
 import { motion, AnimatePresence, useScroll, useTransform, useMotionTemplate, useAnimationFrame, useMotionValue } from "framer-motion";
 import { useState, useEffect, useRef } from "react";
+import { SmoothScroll } from "@/components/SmoothScroll";
+import { ScrollChoreography } from "@/components/ScrollChoreography";
+import { SkillsBento } from "@/components/SkillsBento";
 
 export default function Home() {
   const [activeProject, setActiveProject] = useState(0);
@@ -129,8 +132,9 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-black text-white font-sans selection:bg-zinc-800">
-      {/* Floating Pill Header */}
+    <SmoothScroll>
+      <div className="min-h-screen bg-black text-white font-sans selection:bg-zinc-800">
+        {/* Floating Pill Header */}
       <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-4">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -339,100 +343,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Feature Grid Section (Dia Style) */}
-      <section className="py-24 bg-[#fafafa] text-black border-t border-zinc-200">
-        <div className="max-w-7xl mx-auto px-6 sm:px-12">
-          {/* Section Heading */}
-          <div className="text-center mb-20">
-            <h2 className="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-black">
-              Built for how you actually work
-            </h2>
-          </div>
-
-          {/* Feature Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-12 gap-8">
-            {/* Card 1: Decks (Wider) */}
-            <div className="md:col-span-7 bg-[#f5f5f7] rounded-3xl p-8 sm:p-12 flex flex-col justify-between overflow-hidden relative group border border-zinc-200/20 md:min-h-[500px]">
-              <div>
-                <span className="px-4 py-1.5 bg-white rounded-full text-xs font-semibold text-zinc-700 shadow-sm inline-block mb-6">
-                  Decks
-                </span>
-                <p className="text-zinc-650 text-sm sm:text-base leading-relaxed max-w-md font-sans">
-                  Ask Dia for a deck and your scattered context becomes real slides — headers, layout, and flow you can present without a redesign.
-                </p>
-              </div>
-              <div className="relative w-full h-[240px] mt-8 rounded-2xl overflow-hidden shadow-lg border border-zinc-200/50 translate-y-4 group-hover:translate-y-2 transition-transform duration-500">
-                <Image
-                  src="/images/feature_decks.png"
-                  alt="Decks Feature mockup"
-                  fill
-                  className="object-cover object-top"
-                />
-              </div>
-            </div>
-
-            {/* Card 2: Live Work (Narrower) */}
-            <div className="md:col-span-5 bg-[#f5f5f7] rounded-3xl p-8 sm:p-12 flex flex-col justify-between overflow-hidden relative group border border-zinc-200/20 md:min-h-[500px]">
-              <div>
-                <span className="px-4 py-1.5 bg-white rounded-full text-xs font-semibold text-zinc-700 shadow-sm inline-block mb-6">
-                  Live Work
-                </span>
-                <p className="text-zinc-655 text-sm sm:text-base leading-relaxed max-w-md font-sans">
-                  Dia pulls together the places where work is actually happening (like GitHub and Notion) in your tab bar. Click once and land directly in the right PR, spec, or draft.
-                </p>
-              </div>
-              <div className="relative w-full h-[240px] mt-8 rounded-2xl overflow-hidden shadow-lg border border-zinc-200/50 translate-y-4 group-hover:translate-y-2 transition-transform duration-500">
-                <Image
-                  src="/images/feature_code.png"
-                  alt="Live Work Feature mockup"
-                  fill
-                  className="object-cover object-top"
-                />
-              </div>
-            </div>
-
-            {/* Card 3: Better Meetings (Narrower) */}
-            <div className="md:col-span-5 bg-[#f5f5f7] rounded-3xl p-8 sm:p-12 flex flex-col justify-between overflow-hidden relative group border border-zinc-200/20 md:min-h-[500px]">
-              <div>
-                <span className="px-4 py-1.5 bg-white rounded-full text-xs font-semibold text-zinc-700 shadow-sm inline-block mb-6">
-                  Better Meetings
-                </span>
-                <p className="text-zinc-655 text-sm sm:text-base leading-relaxed max-w-md font-sans">
-                  Every call starts with the right meeting page, agenda, notes, and related docs open, with a gentle countdown so you're on time. All you have to do is show up.
-                </p>
-              </div>
-              <div className="relative w-full h-[240px] mt-8 rounded-2xl overflow-hidden shadow-lg border border-zinc-200/50 translate-y-4 group-hover:translate-y-2 transition-transform duration-500">
-                <Image
-                  src="/images/project_dark_ui.png"
-                  alt="Better Meetings Feature mockup"
-                  fill
-                  className="object-cover object-top"
-                />
-              </div>
-            </div>
-
-            {/* Card 4: Profiles (Wider) */}
-            <div className="md:col-span-7 bg-[#f5f5f7] rounded-3xl p-8 sm:p-12 flex flex-col justify-between overflow-hidden relative group border border-zinc-200/20 md:min-h-[500px]">
-              <div>
-                <span className="px-4 py-1.5 bg-white rounded-full text-xs font-semibold text-zinc-700 shadow-sm inline-block mb-6">
-                  Profiles
-                </span>
-                <p className="text-zinc-655 text-sm sm:text-base leading-relaxed max-w-md font-sans">
-                  Create clean lines between work and play, with custom tabs, logins, and color themes. Live in work mode during the day, then switch into personal browsing without accounts or histories bleeding together.
-                </p>
-              </div>
-              <div className="relative w-full h-[240px] mt-8 rounded-2xl overflow-hidden shadow-lg border border-zinc-200/50 translate-y-4 group-hover:translate-y-2 transition-transform duration-500">
-                <Image
-                  src="/images/project_device.png"
-                  alt="Profiles Feature mockup"
-                  fill
-                  className="object-cover object-top"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Skills Bento Section */}
+      <SkillsBento />
 
       {/* Privacy/Performance Section */}
       <section className="py-12 bg-[#fbfbfb] text-black border-t border-zinc-200 overflow-hidden">
@@ -512,6 +424,9 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <ScrollChoreography />
     </div>
+    </SmoothScroll>
   );
 }
