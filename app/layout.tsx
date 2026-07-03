@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Playfair_Display } from "next/font/google";
+import { Geist, Geist_Mono, Playfair_Display, Orbitron } from "next/font/google";
 import { ProgressBar } from "@/components/ProgressBar";
 import "./globals.css";
 
@@ -18,6 +18,12 @@ const playfair = Playfair_Display({
   subsets: ["latin"],
 });
 
+const orbitron = Orbitron({
+  variable: "--font-orbitron",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700", "800", "900"],
+});
+
 export const metadata: Metadata = {
   title: "Reality . | Designer & Developer Portfolio",
   description: "I craft digital experiences at the intersection of design and code — building products that are both beautiful and functional.",
@@ -31,7 +37,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} antialiased`}
+      className={`${geistSans.variable} ${geistMono.variable} ${playfair.variable} ${orbitron.variable} antialiased`}
     >
       <body className="flex flex-col bg-white text-zinc-900 dark:bg-black dark:text-zinc-50">
         <ProgressBar />
